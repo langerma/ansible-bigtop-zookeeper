@@ -1,0 +1,27 @@
+- name: 'install zookeeper'
+  yum:
+    name: zookeeper-server
+    state: latest
+
+- name: Write myid file.
+  template:
+    src: myid.j2
+    dest: "{{ zookeeper_data_dir }}/myid"
+    owner: zookeeper
+    group: zookeeper
+    force: "{{ zookeeper_force_myid }}"
+  notify:
+    - Restart zookeeper
+
+- name: Configure zookeeper zoo.cfg
+  template:
+    src: zoo.cfg.j2
+    dest: "{{ zookeeper_conf_dir }}/conf/zoo.cfg"
+  notify:
+    - Restart zookeeper
+
+- name: Enable Zookeeper
+  service:
+    name: zookeeper-server
+    state: restarted
+    enabled: yes
