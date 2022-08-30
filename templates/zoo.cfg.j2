@@ -19,6 +19,6 @@ server.{{server.id}}={{server.ip}}:{{zookeeper_cluster_ports}}
 server.{{server.id}}={{server.host}}:{{zookeeper_cluster_ports}}
 {% endif %}
 {% else %}
-server.{{loop.index}}={{server.ansible_host}}:{{zookeeper_cluster_ports}}
+server.{{loop.index}}={{ansible_host}}:{{zookeeper_cluster_ports}}
 {% endif %}
 {% endfor %}

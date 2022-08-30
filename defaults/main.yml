@@ -17,7 +17,7 @@ zookeeper_hosts_hostname: "{{inventory_hostname}}"
 # List of dict (i.e. {zookeeper_hosts:[{host:,id:},{host:,id:},...]})
 zookeeper_hosts:
   - host: "{{zookeeper_hosts_hostname}}" # the machine running
-    id: 1
+    ip: "{{ ansible_host }}"
 
 # Dict of ENV settings to be written into the (optional) conf/zookeeper-env.sh
 zookeeper_env: {}
