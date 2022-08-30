@@ -3,8 +3,8 @@
 ---
 galaxy_info:
   author: Markus Langer
-  role_name: ansible-bigtop-repository
-  description: install ansible bigtop repository
+  role_name: ansible-bigtop-zookeeper
+  description: install zookeeper from bigtop
   license: BSD 3-Clause License
   company: langerma.org
   min_ansible_version: "2.10"
