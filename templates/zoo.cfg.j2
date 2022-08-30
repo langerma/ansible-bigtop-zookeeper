@@ -22,13 +22,3 @@ server.{{server.id}}={{server.host}}:{{zookeeper_cluster_ports}}
 server.{{loop.index}}={{server}}:{{zookeeper_cluster_ports}}
 {% endif %}
 {% endfor %}
-
-# some stuff to try:
-#{% for url in zookeeper_hosts %}
-#  {%- set url_host = url.split(':')[0] -%}
-#  {%- if url_host == inventory_hostname or url_host in ansible_all_ipv4_addresses -%}
-#server.{{loop.index0}}=0.0.0.0:2888:3888
-#{% else %}
-#server.{{loop.index0}}={{url_host}}:2888:3888
-#{% endif %}
-#{% endfor %}
