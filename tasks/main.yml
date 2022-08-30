@@ -13,6 +13,14 @@
   notify:
     - Restart zookeeper
 
+- name: create version-2 directory
+  ansible.builtin.file:
+    path: "{{ zookeeper_data_dir }}/version-2"
+    state: directory
+    recurse: yes
+    owner: zookeeper
+    group: zookeeper
+
 - name: Configure zookeeper zoo.cfg
   template:
     src: zoo.cfg.j2
