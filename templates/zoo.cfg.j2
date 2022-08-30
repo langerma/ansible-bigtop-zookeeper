@@ -19,6 +19,6 @@ server.{{server.id}}={{server.ip}}:{{zookeeper_cluster_ports}}
 server.{{server.id}}={{server.host}}:{{zookeeper_cluster_ports}}
 {% endif %}
 {% else %}
-server.{{loop.index}}={{hostvars[server]['ens10']['ipv4']['address']}:{{zookeeper_cluster_ports}}
+server.{{loop.index}}={{server}}:{{zookeeper_cluster_ports}}
 {% endif %}
 {% endfor %}
