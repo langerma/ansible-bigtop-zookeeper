@@ -7,8 +7,17 @@ an ansible role to install and configure zookeeper-server on rhel/centos 7
 - hosts: all
   remote_user: vagrant
 
+  pre_tasks:
+    - name: install java-11-openjdk
+      ansible.builtin.yum:
+        name: java-11-openjdk
+        state: present
   roles:
-    - role: ansible-bigtop-zookeeper
-      zookeeper_hosts: "{{groups['master']}}"
-      when: '"master" in group_names'
+    - name: ansible-bigtop-zookeeper
+      zookeeper_hosts: "
+        {%- set ips = [] %}
+        {%- for host in groups['zookeeper'] %}
+        {{- ips.append(dict(id=loop.index, host=host, ip=hostvars[host]['ansible_default_ipv4'].address)) }}
+        {%- endfor %}
+        {{- ips -}}"
 ```
