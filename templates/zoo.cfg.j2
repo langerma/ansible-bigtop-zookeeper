@@ -11,9 +11,11 @@ autopurge.purgeInterval={{ zookeeper_autopurge_purgeInterval }}
 autopurge.snapRetainCount={{ zookeeper_autopurge_snapRetainCount }}
 {% endif %}
 
-# add metrics
-metricsProvider.className=org.apache.zookeeper.metrics.prometheus.PrometheusMetricsProvider
-metricsProvider.httpPort={{ zookeeper_metrics_port }}
+{% if zookeeper_metrics_enabled is true %}
+# add metrics applies only after version 3.6
+#metricsProvider.className=org.apache.zookeeper.metrics.prometheus.PrometheusMetricsProvider
+#metricsProvider.httpPort={{ zookeeper_metrics_port }}
+{% endif %}
 
 {% for server in zookeeper_hosts %}
 {% if server.host is defined %}
