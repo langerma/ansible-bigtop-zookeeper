@@ -13,6 +13,8 @@ zookeeper_data_dir: /var/lib/zookeeper
 zookeeper_log_dir: /var/log/zookeeper
 zookeeper_conf_dir: /etc/zookeeper
 
+zookeeper_jvmflags: -Xmx128m -Xms128m
+
 zookeeper_metrics_enabled: false
 zookeeper_metrics_port: 7000
 

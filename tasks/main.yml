@@ -36,6 +36,24 @@
   notify:
     - Restart zookeeper
 
+- name: copy java.env
+  ansible.builtin.template:
+    src: java.env.j2
+    dest: "{{ zookeeper_conf_dir }}/java.env"
+    owner: zookeeper
+    group: zookeeper
+  notify:
+    - Restart zookeeper
+
+- name: copy zookeeper-env.sh
+  ansible.builtin.template:
+    src: zookeeper-env.sh.j2
+    dest: "{{ zookeeper_conf_dir }}/zookeeper-env.sh"
+    owner: zookeeper
+    group: zookeeper
+  notify:
+    - Restart zookeeper
+
 - name: Enable Zookeeper
   ansible.builtin.systemd:
     name: zookeeper-server
